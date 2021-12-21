@@ -1,0 +1,55 @@
+---
+- hosts: centos
+  become: true
+  become_user: root
+  pre_tasks:
+
+  - name: update cache
+    package:
+      update_cache: yes
+
+#Install LAMP stack on centos
+- hosts: centos
+  gather_facts: false
+  name: install LAMP in centos
+  become: true
+  become_user: root
+  roles:
+    - lamp_centos
+
+##Install LAMP stack on ubuntu
+#- hosts: ubuntu
+#  gather_facts: false
+#  name: install LAMP in ubuntu
+#  become: true
+#  become_user: root
+#  roles:
+#    - lamp_ubuntu
+
+##Install nagios on Ubuntu
+#- hosts: ubuntu
+#  gather_facts: false
+#  name: install nagios on ubuntu
+#  become: true
+#  become_user: root
+#  roles:
+#    - nagios
+
+##Install ELK stack on Ubuntu
+#- hosts: ubuntu
+#  gather_facts: false
+#  name: install ELK on ubuntu
+#  become: true
+#  become_user: root
+#  roles:
+#    - ubuntu
+#
+##Install ELK stack on CentOS
+#- hosts: centos
+#  gather_facts: false
+#  name: install ELK on centos
+#  become: true
+#  become_user: root
+#  roles:
+#    - centos
+

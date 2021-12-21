@@ -1,0 +1,32 @@
+#Install LAMP stack in centos
+- name: install apache
+  yum:
+    name: httpd
+    state: installed
+
+- name: enable httpd
+  service:
+    name: httpd
+    enabled: yes
+    state: started
+
+- name: install mysql db
+  yum:
+    name:
+      - mariadb-server
+      - mariadb
+    state: latest
+
+- name: enable mariadb
+  service:
+    name: mariadb.service enabled=yes state=started
+  
+
+- name: system reload
+  systemd: daemon_reload=yes
+
+- name: instal php
+  yum:
+    name:
+      - php
+    state: latest
